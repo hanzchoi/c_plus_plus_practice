@@ -25,7 +25,11 @@ int main() {
     int allCheck[3]={0,0,0};
     
     int col[9][9];
+    int checkerBox[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     
+           
+    
+    // TO MAKE COL
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
             col[i][j] = VALID_SOLUTION[j][i];
@@ -33,27 +37,44 @@ int main() {
         cout<< endl;
     }
     
+    //ROW CHECK
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
-            cout << col[i][j] << " ";
+            checkerBox[VALID_SOLUTION[i][j]-1]++;
         }
-        cout<< endl;
+        
+        if(!isItSudoku(checkerBox)){
+            allCheck[0]=1;
+            break;
+        }
+        
+        std::fill_n(checkerBox, 9, 0);
     }
     
+    std::fill_n(checkerBox, 9, 0);
 
-    //int row[9] = {9, 1, 6, 8, 4, 3, 5, 2, 7};
-    //int checkerBox[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-//
-//    for(int i=0; i<9; i++){
-//        if(checkerBox[row[i]-1] == 0){
-//            cout << checkerBox[row[i]-1] << endl;
-//
-//            checkerBox[row[i]-1]++;
-//        }
-//    }
-//
+    //COL CHECK
+    for(int i=0; i<9; i++){
+        for(int j=0; j<9; j++){
+            checkerBox[col[i][j]-1]++;
+        }
+        
+        if(!isItSudoku(checkerBox)){
+            allCheck[0]=1;
+            break;
+        }
+        
+        std::fill_n(checkerBox, 9, 0);
+    }
+    
+    std::fill_n(checkerBox, 9, 0);
+
+    
+    
+    cout << allCheck[0] << ", " << allCheck[1]  << ", " << allCheck[2] << endl;
+
 //    cout << isItSudoku(checkerBox) << endl;
-    cout << fCheck(allCheck);
+    //cout << fCheck(allCheck);
     return 0;
 }
 
@@ -65,7 +86,7 @@ bool isItSudoku(int *box){
             break;
         }
     }
-    
+        
     return check;
 }
 
