@@ -78,7 +78,7 @@ int main() {
         for(int J=0; J<6; J+=3){
             for(int i=I; i<I+3; i++){
                 for(int j=J; j<J+3; j++){
-                    littleBox[I][J] = VALID_SOLUTION[i+I][j+J];
+                    littleBox[i][j] = VALID_SOLUTION[i][j];
                 }
             }
         }
