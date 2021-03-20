@@ -24,15 +24,15 @@ int main() {
     
     int allCheck[3]={0,0,0};
     
-    int col[9][9];
+    int columnRe[9][9];
+    int littleBox[9][9];
     int checkerBox[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-    
            
     
     // TO MAKE COL
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
-            col[i][j] = VALID_SOLUTION[j][i];
+            columnRe[i][j] = VALID_SOLUTION[j][i];
         }
         cout<< endl;
     }
@@ -42,7 +42,7 @@ int main() {
         for(int j=0; j<9; j++){
             checkerBox[VALID_SOLUTION[i][j]-1]++;
         }
-        
+        // we can check and return false right away
         if(!isItSudoku(checkerBox)){
             allCheck[0]=1;
             break;
@@ -50,13 +50,13 @@ int main() {
         
         std::fill_n(checkerBox, 9, 0);
     }
-    
+    // this shows that youre unsure
     std::fill_n(checkerBox, 9, 0);
 
     //COL CHECK
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
-            checkerBox[col[i][j]-1]++;
+            checkerBox[columnRe[i][j]-1]++;
         }
         
         if(!isItSudoku(checkerBox)){
@@ -68,8 +68,26 @@ int main() {
     }
     
     std::fill_n(checkerBox, 9, 0);
-
     
+    
+    //Make LittleBox
+    for(int I=0; I<9; I++){
+        for(int J=0; J<9; J++){
+            for(int i=I; i<3; i++){
+                for(int j=J; j<3; j++){
+                    littleBox[I][J] = VALID_SOLUTION[i+I][j+J];
+                }
+            }
+        }
+    }
+    cout << "test" << endl;
+    for(int i=0; i<9; i++){
+        for(int j=0; j<9; j++){
+            cout << littleBox[i][j] << ", ";
+        }
+        cout << endl;
+    }
+
     
     cout << allCheck[0] << ", " << allCheck[1]  << ", " << allCheck[2] << endl;
 
@@ -78,6 +96,7 @@ int main() {
     return 0;
 }
 
+//make it similiar to fcheck
 bool isItSudoku(int *box){
     bool check = true;
     for(int i=0; i < 9; i++){
@@ -100,3 +119,6 @@ bool fCheck(int *allCheck){
     return true;
 }
 
+
+
+//make the function and impolemnt short circuiting
