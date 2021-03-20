@@ -69,17 +69,21 @@ int main() {
     
     std::fill_n(checkerBox, 9, 0);
     
+    int row=0;
+    int column=0;
+    //
     
     //Make LittleBox
-    for(int I=0; I<9; I++){
-        for(int J=0; J<9; J++){
-            for(int i=I; i<3; i++){
-                for(int j=J; j<3; j++){
+    for(int I=0; I<6; I+=3){
+        for(int J=0; J<6; J+=3){
+            for(int i=I; i<I+3; i++){
+                for(int j=J; j<J+3; j++){
                     littleBox[I][J] = VALID_SOLUTION[i+I][j+J];
                 }
             }
         }
     }
+    
     cout << "test" << endl;
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
