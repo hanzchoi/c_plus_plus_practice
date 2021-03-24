@@ -77,56 +77,26 @@ int main() {
     
     //Make LittleBox
     for(int I=0; I<=7; I+=3){
-        //cout << "start row: " << row  << endl;
-        //row++;
-        //column++;
-        //column=0;
         for(int J=0; J<=7; J+=3){
-            //row++; nine but zero is only once
-            //column++;
-            //column=0;
             for(int i=I; i<I+3; i++){
-                //row++; 27
-                //column++;
-                //column=0;
                 for(int j=J; j<J+3; j++){
                     littleBox[row][column] = VALID_SOLUTION[i][j];
-                    cout << "Inner loop: " << endl;
-                    cout << "row: " << row << endl;
-                    cout << "column: " << column << endl;
-                    cout << endl;
-
-                    //row++; 81
-                    //column++;
-                    //column=0;
+                    column++;
                 }
-                //row++; nope
-                //column++;
-                //column=0;
             }
-            row++; // the right one
-            //column++;
-            //column=0;
+            row++;
+            column=0;
         }
-        //cout << "End row: " << row << endl;
     }
     
     
-    
-    //cout << "J: " << J << endl;
-    //cout << "outer J loop: " << column << endl;
-    //cout << endl;
-    //cout << "outer i loop row: " << row << endl;
-    //cout << "outer i loop column: " << column << endl;
-    //cout << endl;
-    
-//    cout << "test" << endl;
-//    for(int i=0; i<9; i++){
-//        for(int j=0; j<9; j++){
-//            cout << littleBox[i][j] << ", ";
-//        }
-//        cout << endl;
-//    }
+    cout << "test" << endl;
+    for(int i=0; i<9; i++){
+        for(int j=0; j<9; j++){
+            cout << littleBox[i][j] << ", ";
+        }
+        cout << endl;
+    }
 
     
     //cout << allCheck[0] << ", " << allCheck[1]  << ", " << allCheck[2] << endl;
